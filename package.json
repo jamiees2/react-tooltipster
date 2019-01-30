@@ -1,6 +1,6 @@
 {
   "name": "react-tooltipster",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "tooltipster plugin for react",
   "main": "dist/index.js",
   "sideEffects": false,
@@ -14,8 +14,7 @@
   "dependencies": {
     "prop-types": "^15.6.2",
     "@babel/runtime": "^7.3.1",
-    "svg.js": "^2.7.1",
-    "svg.screenbbox.js": "^0.1.2"
+    "svg.js": "^2.7.1"
   },
   "peerDependencies": {
     "jquery": "^3.3.1",
