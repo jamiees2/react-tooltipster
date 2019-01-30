@@ -7,6 +7,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/extends"));
+
 var _objectSpread2 = _interopRequireDefault(require("@babel/runtime/helpers/objectSpread"));
 
 var _classCallCheck2 = _interopRequireDefault(require("@babel/runtime/helpers/classCallCheck"));
@@ -20,6 +22,8 @@ var _getPrototypeOf2 = _interopRequireDefault(require("@babel/runtime/helpers/ge
 var _inherits2 = _interopRequireDefault(require("@babel/runtime/helpers/inherits"));
 
 var _react = _interopRequireDefault(require("react"));
+
+var _reactDom = require("react-dom");
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
@@ -54,7 +58,7 @@ function (_React$Component) {
     (0, _classCallCheck2.default)(this, Tooltipster);
     _this = (0, _possibleConstructorReturn2.default)(this, (0, _getPrototypeOf2.default)(Tooltipster).call(this, props));
     _this.rootRef = _react.default.createRef();
-    _this.contentRef = _react.default.createRef();
+    _this.contentEl = document.createElement('div');
     return _this;
   }
 
@@ -62,7 +66,7 @@ function (_React$Component) {
     key: "componentDidMount",
     value: function componentDidMount() {
       var $root = (0, _jquery.default)(this.rootRef.current);
-      var $content = (0, _jquery.default)(this.contentRef.current);
+      var $content = (0, _jquery.default)(this.contentEl);
       $root.tooltipster((0, _objectSpread2.default)({
         content: $content
       }, getArguments(this.props)));
@@ -73,7 +77,7 @@ function (_React$Component) {
       var prevArgs = getArguments(prevProps);
       var newArgs = getArguments(this.props);
       var $root = (0, _jquery.default)(this.rootRef.current);
-      var $content = (0, _jquery.default)(this.contentRef.current);
+      var $content = (0, _jquery.default)(this.contentEl);
 
       if (diff(prevArgs, newArgs, tooltipsterArguments)) {
         $root.tooltipster('destroy');
@@ -94,15 +98,10 @@ function (_React$Component) {
     key: "render",
     value: function render() {
       var Root = this.props.rootType;
-      return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(Root, {
+      (0, _reactDom.render)(this.props.content, this.contentEl);
+      return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(Root, (0, _extends2.default)({
         ref: this.rootRef
-      }, this.props.children), _react.default.createElement("div", {
-        style: {
-          display: "none"
-        }
-      }, _react.default.createElement("span", {
-        ref: this.contentRef
-      }, this.props.content)));
+      }, this.props.rootProps), this.props.children));
     }
   }]);
   return Tooltipster;
@@ -114,6 +113,7 @@ Tooltipster.defaultProps = {
 Tooltipster.propTypes = {
   children: _propTypes.default.node,
   rootType: _propTypes.default.string,
+  rootProps: _propTypes.default.object,
   content: _propTypes.default.node,
   animation: _propTypes.default.oneOf(['fade', 'grow', 'swing', 'slide', 'fall']),
   animationDuration: _propTypes.default.oneOfType([_propTypes.default.integer, _propTypes.default.arrayOf(_propTypes.default.integer)]),

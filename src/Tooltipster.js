@@ -1,4 +1,5 @@
 import React from 'react'
+import { render } from 'react-dom'
 import PropTypes from 'prop-types'
 import jQuery from 'jquery'
 import 'tooltipster'
@@ -13,16 +14,17 @@ const getArguments = (props) => {
 
 const diff = (a, b, k) => !k.every(arg => a[arg] === b[arg])
 
+
 class Tooltipster extends React.Component {
   constructor(props) {
     super(props)
     this.rootRef = React.createRef()
-    this.contentRef = React.createRef()
+    this.contentEl = document.createElement('div')
   }
 
   componentDidMount() {
     const $root = jQuery(this.rootRef.current)
-    const $content = jQuery(this.contentRef.current)
+    const $content = jQuery(this.contentEl)
     $root.tooltipster({
       content: $content,
       ...getArguments(this.props)
@@ -32,7 +34,7 @@ class Tooltipster extends React.Component {
     const prevArgs = getArguments(prevProps)
     const newArgs = getArguments(this.props)
     const $root = jQuery(this.rootRef.current)
-    const $content = jQuery(this.contentRef.current)
+    const $content = jQuery(this.contentEl)
 
     if (diff(prevArgs, newArgs, tooltipsterArguments)) {
       $root.tooltipster('destroy')
@@ -53,16 +55,12 @@ class Tooltipster extends React.Component {
 
   render() {
     const Root = this.props.rootType
+    render(this.props.content, this.contentEl)
     return (
       <React.Fragment>
-        <Root ref={this.rootRef}>
+        <Root ref={this.rootRef} {...this.props.rootProps}>
           {this.props.children}
         </Root>
-        <div style={{ display: "none" }}>
-          <span ref={this.contentRef}>
-            {this.props.content}
-          </span>
-        </div>
       </React.Fragment>
     )
   }
@@ -73,6 +71,7 @@ Tooltipster.defaultProps = {
 Tooltipster.propTypes = {
   children: PropTypes.node,
   rootType: PropTypes.string,
+  rootProps: PropTypes.object,
   content: PropTypes.node,
   animation: PropTypes.oneOf(['fade', 'grow', 'swing', 'slide', 'fall']),
   animationDuration: PropTypes.oneOfType([
@@ -129,5 +128,6 @@ Tooltipster.propTypes = {
   viewportAware: PropTypes.boolean,
   zIndex: PropTypes.integer
 }
+
 export default Tooltipster
 
