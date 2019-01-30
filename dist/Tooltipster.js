@@ -1,0 +1,156 @@
+"use strict";
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _objectSpread2 = _interopRequireDefault(require("@babel/runtime/helpers/objectSpread"));
+
+var _classCallCheck2 = _interopRequireDefault(require("@babel/runtime/helpers/classCallCheck"));
+
+var _createClass2 = _interopRequireDefault(require("@babel/runtime/helpers/createClass"));
+
+var _possibleConstructorReturn2 = _interopRequireDefault(require("@babel/runtime/helpers/possibleConstructorReturn"));
+
+var _getPrototypeOf2 = _interopRequireDefault(require("@babel/runtime/helpers/getPrototypeOf"));
+
+var _inherits2 = _interopRequireDefault(require("@babel/runtime/helpers/inherits"));
+
+var _react = _interopRequireDefault(require("react"));
+
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
+var _jquery = _interopRequireDefault(require("jquery"));
+
+require("tooltipster");
+
+var tooltipsterArguments = ["animation", "animationDuration", "arrow", "debug", "delay", "delayTouch", "distance", "functionInit", "functionBefore", "functionReady", "functionAfter", "functionFormat", "functionPosition", "IEMin", "interactive", "maxWidth", "minIntersection", "minWidth", "plugins", "repositionOnScroll", "side", "timer", "theme", "trackOrigin", "trackTooltip", "trigger", "triggerClose", "triggerOpen", "updateAnimation", "viewportAware", "zIndex"];
+
+var getArguments = function getArguments(props) {
+  var res = {};
+  tooltipsterArguments.forEach(function (a) {
+    res[a] = props[a];
+  });
+  return res;
+};
+
+var diff = function diff(a, b, k) {
+  return !k.every(function (arg) {
+    return a[arg] === b[arg];
+  });
+};
+
+var Tooltipster =
+/*#__PURE__*/
+function (_React$Component) {
+  (0, _inherits2.default)(Tooltipster, _React$Component);
+
+  function Tooltipster(props) {
+    var _this;
+
+    (0, _classCallCheck2.default)(this, Tooltipster);
+    _this = (0, _possibleConstructorReturn2.default)(this, (0, _getPrototypeOf2.default)(Tooltipster).call(this, props));
+    _this.rootRef = _react.default.createRef();
+    _this.contentRef = _react.default.createRef();
+    return _this;
+  }
+
+  (0, _createClass2.default)(Tooltipster, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var $root = (0, _jquery.default)(this.rootRef.current);
+      var $content = (0, _jquery.default)(this.contentRef.current);
+      $root.tooltipster((0, _objectSpread2.default)({
+        content: $content
+      }, getArguments(this.props)));
+    }
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(prevProps) {
+      var prevArgs = getArguments(prevProps);
+      var newArgs = getArguments(this.props);
+      var $root = (0, _jquery.default)(this.rootRef.current);
+      var $content = (0, _jquery.default)(this.contentRef.current);
+
+      if (diff(prevArgs, newArgs, tooltipsterArguments)) {
+        $root.tooltipster('destroy');
+        $root.tooltipster((0, _objectSpread2.default)({
+          content: $content
+        }, newArgs));
+      } else {
+        $root.tooltipster('content', $content);
+      }
+    }
+  }, {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      var $root = (0, _jquery.default)(this.rootRef.current);
+      $root.tooltipster('destroy');
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var Root = this.props.rootType;
+      return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(Root, {
+        ref: this.rootRef
+      }, this.props.children), _react.default.createElement("div", {
+        style: {
+          display: "none"
+        }
+      }, _react.default.createElement("span", {
+        ref: this.contentRef
+      }, this.props.content)));
+    }
+  }]);
+  return Tooltipster;
+}(_react.default.Component);
+
+Tooltipster.defaultProps = {
+  rootType: 'span'
+};
+Tooltipster.propTypes = {
+  children: _propTypes.default.node,
+  rootType: _propTypes.default.string,
+  content: _propTypes.default.node,
+  animation: _propTypes.default.oneOf(['fade', 'grow', 'swing', 'slide', 'fall']),
+  animationDuration: _propTypes.default.oneOfType([_propTypes.default.integer, _propTypes.default.arrayOf(_propTypes.default.integer)]),
+  arrow: _propTypes.default.boolean,
+  // contentAsHTML: PropTypes.boolean,
+  debug: _propTypes.default.boolean,
+  delay: _propTypes.default.oneOfType([_propTypes.default.integer, _propTypes.default.arrayOf(_propTypes.default.integer)]),
+  delayTouch: _propTypes.default.oneOfType([_propTypes.default.integer, _propTypes.default.arrayOf(_propTypes.default.integer)]),
+  distance: _propTypes.default.oneOfType([_propTypes.default.integer, _propTypes.default.arrayOf(_propTypes.default.integer)]),
+  functionInit: _propTypes.default.func,
+  functionBefore: _propTypes.default.func,
+  functionReady: _propTypes.default.func,
+  functionAfter: _propTypes.default.func,
+  functionFormat: _propTypes.default.func,
+  functionPosition: _propTypes.default.func,
+  IEMin: _propTypes.default.integer,
+  interactive: _propTypes.default.boolean,
+  maxWidth: _propTypes.default.integer,
+  minIntersection: _propTypes.default.integer,
+  minWidth: _propTypes.default.integer,
+  // multiple: PropTypes.boolean,
+  plugins: _propTypes.default.arrayOf(_propTypes.default.string),
+  repositionOnScroll: _propTypes.default.boolean,
+  // restoration: PropTypes.oneOf(['none', 'previous', 'current']),
+  // selfDestruction: PropTypes.boolean,
+  side: _propTypes.default.oneOfType([_propTypes.default.oneOf(['top', 'bottom', 'right', 'left']), _propTypes.default.arrayOf(_propTypes.default.oneOf(['top', 'bottom', 'right', 'left']))]),
+  timer: _propTypes.default.integer,
+  theme: _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.arrayOf(_propTypes.default.string)]),
+  // trackerInterval: PropTypes.integer,
+  trackOrigin: _propTypes.default.boolean,
+  trackTooltip: _propTypes.default.boolean,
+  trigger: _propTypes.default.oneOf(['hover', 'click', 'custom']),
+  triggerClose: _propTypes.default.object,
+  triggerOpen: _propTypes.default.object,
+  updateAnimation: _propTypes.default.oneOf(['fade', 'rotate', 'scale']),
+  viewportAware: _propTypes.default.boolean,
+  zIndex: _propTypes.default.integer
+};
+var _default = Tooltipster;
+exports.default = _default;
