@@ -1,5 +1,5 @@
 import React from 'react'
-import { render } from 'react-dom'
+import { createPortal } from 'react-dom'
 import PropTypes from 'prop-types'
 import jQuery from 'jquery'
 import 'tooltipster'
@@ -53,14 +53,18 @@ class Tooltipster extends React.Component {
     $root.tooltipster('destroy')
   }
 
+  renderContent() {
+    return createPortal(this.props.content, this.contentEl)
+  }
+
   render() {
     const Root = this.props.rootType
-    render(this.props.content, this.contentEl)
     return (
       <React.Fragment>
         <Root ref={this.rootRef} {...this.props.rootProps}>
           {this.props.children}
         </Root>
+        { this.renderContent() }
       </React.Fragment>
     )
   }

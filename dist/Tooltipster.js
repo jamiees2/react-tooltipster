@@ -95,13 +95,17 @@ function (_React$Component) {
       $root.tooltipster('destroy');
     }
   }, {
+    key: "renderContent",
+    value: function renderContent() {
+      return (0, _reactDom.createPortal)(this.props.content, this.contentEl);
+    }
+  }, {
     key: "render",
     value: function render() {
       var Root = this.props.rootType;
-      (0, _reactDom.render)(this.props.content, this.contentEl);
       return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(Root, (0, _extends2.default)({
         ref: this.rootRef
-      }, this.props.rootProps), this.props.children));
+      }, this.props.rootProps), this.props.children), this.renderContent());
     }
   }]);
   return Tooltipster;
