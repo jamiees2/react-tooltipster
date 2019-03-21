@@ -82,9 +82,9 @@ Tooltipster.propTypes = {
     PropTypes.integer,
     PropTypes.arrayOf(PropTypes.integer),
   ]),
-  arrow: PropTypes.boolean,
-  // contentAsHTML: PropTypes.boolean,
-  debug: PropTypes.boolean,
+  arrow: PropTypes.bool,
+  // contentAsHTML: PropTypes.bool,
+  debug: PropTypes.bool,
   delay:  PropTypes.oneOfType([
     PropTypes.integer,
     PropTypes.arrayOf(PropTypes.integer),
@@ -104,15 +104,15 @@ Tooltipster.propTypes = {
   functionFormat: PropTypes.func,
   functionPosition: PropTypes.func,
   IEMin: PropTypes.integer,
-  interactive: PropTypes.boolean,
+  interactive: PropTypes.bool,
   maxWidth: PropTypes.integer,
   minIntersection: PropTypes.integer,
   minWidth: PropTypes.integer,
-  // multiple: PropTypes.boolean,
+  // multiple: PropTypes.bool,
   plugins: PropTypes.arrayOf(PropTypes.string),
-  repositionOnScroll: PropTypes.boolean,
+  repositionOnScroll: PropTypes.bool,
   // restoration: PropTypes.oneOf(['none', 'previous', 'current']),
-  // selfDestruction: PropTypes.boolean,
+  // selfDestruction: PropTypes.bool,
   side: PropTypes.oneOfType([
     PropTypes.oneOf(['top', 'bottom', 'right', 'left']),
     PropTypes.arrayOf(PropTypes.oneOf(['top', 'bottom', 'right', 'left']))
@@ -123,13 +123,13 @@ Tooltipster.propTypes = {
     PropTypes.arrayOf(PropTypes.string)
   ]),
   // trackerInterval: PropTypes.integer,
-  trackOrigin: PropTypes.boolean,
-  trackTooltip: PropTypes.boolean,
+  trackOrigin: PropTypes.bool,
+  trackTooltip: PropTypes.bool,
   trigger: PropTypes.oneOf(['hover', 'click', 'custom']),
   triggerClose: PropTypes.object,
   triggerOpen: PropTypes.object,
   updateAnimation: PropTypes.oneOf(['fade', 'rotate', 'scale']),
-  viewportAware: PropTypes.boolean,
+  viewportAware: PropTypes.bool,
   zIndex: PropTypes.integer
 }
 

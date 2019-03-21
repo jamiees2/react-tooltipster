@@ -4614,17 +4614,10 @@ supports-color@^6.1.0:
   dependencies:
     has-flag "^3.0.0"
 
-svg.js@^2.2.0, svg.js@^2.7.1:
+svg.js@^2.7.1:
   version "2.7.1"
   resolved "https://registry.yarnpkg.com/svg.js/-/svg.js-2.7.1.tgz#eb977ed4737001eab859949b4a398ee1bb79948d"
   integrity sha512-ycbxpizEQktk3FYvn/8BH+6/EuWXg7ZpQREJvgacqn46gIddG24tNNe4Son6omdXCnSOaApnpZw6MPCBA1dODA==
-
-svg.screenbbox.js@^0.1.2:
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/svg.screenbbox.js/-/svg.screenbbox.js-0.1.2.tgz#73fcf513783a46dcba026731234af49a4ed02746"
-  integrity sha1-c/z1E3g6Rty6AmcxI0r0mk7QJ0Y=
-  dependencies:
-    svg.js "^2.2.0"
 
 tapable@^1.0.0, tapable@^1.1.0:
   version "1.1.1"
