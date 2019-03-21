@@ -79,23 +79,23 @@ Tooltipster.propTypes = {
   content: PropTypes.node,
   animation: PropTypes.oneOf(['fade', 'grow', 'swing', 'slide', 'fall']),
   animationDuration: PropTypes.oneOfType([
-    PropTypes.integer,
-    PropTypes.arrayOf(PropTypes.integer),
+    PropTypes.number,
+    PropTypes.arrayOf(PropTypes.number),
   ]),
   arrow: PropTypes.bool,
   // contentAsHTML: PropTypes.bool,
   debug: PropTypes.bool,
   delay:  PropTypes.oneOfType([
-    PropTypes.integer,
-    PropTypes.arrayOf(PropTypes.integer),
+    PropTypes.number,
+    PropTypes.arrayOf(PropTypes.number),
   ]),
   delayTouch: PropTypes.oneOfType([
-    PropTypes.integer,
-    PropTypes.arrayOf(PropTypes.integer),
+    PropTypes.number,
+    PropTypes.arrayOf(PropTypes.number),
   ]),
   distance: PropTypes.oneOfType([
-    PropTypes.integer,
-    PropTypes.arrayOf(PropTypes.integer),
+    PropTypes.number,
+    PropTypes.arrayOf(PropTypes.number),
   ]),
   functionInit: PropTypes.func,
   functionBefore: PropTypes.func,
@@ -103,11 +103,11 @@ Tooltipster.propTypes = {
   functionAfter: PropTypes.func,
   functionFormat: PropTypes.func,
   functionPosition: PropTypes.func,
-  IEMin: PropTypes.integer,
+  IEMin: PropTypes.number,
   interactive: PropTypes.bool,
-  maxWidth: PropTypes.integer,
-  minIntersection: PropTypes.integer,
-  minWidth: PropTypes.integer,
+  maxWidth: PropTypes.number,
+  minIntersection: PropTypes.number,
+  minWidth: PropTypes.number,
   // multiple: PropTypes.bool,
   plugins: PropTypes.arrayOf(PropTypes.string),
   repositionOnScroll: PropTypes.bool,
@@ -117,12 +117,12 @@ Tooltipster.propTypes = {
     PropTypes.oneOf(['top', 'bottom', 'right', 'left']),
     PropTypes.arrayOf(PropTypes.oneOf(['top', 'bottom', 'right', 'left']))
   ]),
-  timer: PropTypes.integer,
+  timer: PropTypes.number,
   theme: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.arrayOf(PropTypes.string)
   ]),
-  // trackerInterval: PropTypes.integer,
+  // trackerInterval: PropTypes.number,
   trackOrigin: PropTypes.bool,
   trackTooltip: PropTypes.bool,
   trigger: PropTypes.oneOf(['hover', 'click', 'custom']),
@@ -130,7 +130,7 @@ Tooltipster.propTypes = {
   triggerOpen: PropTypes.object,
   updateAnimation: PropTypes.oneOf(['fade', 'rotate', 'scale']),
   viewportAware: PropTypes.bool,
-  zIndex: PropTypes.integer
+  zIndex: PropTypes.number
 }
 
 export default Tooltipster
