@@ -11,7 +11,8 @@ const Component = () => {
     fill: "#FF7979",
     cx: "142.5",
     cy: "147.5",
-    r: "92.5"
+    r: "92.5",
+    className: "test"
   }
   const starProps = {
     id:"Star-1",

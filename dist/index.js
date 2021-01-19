@@ -8,13 +8,13 @@ Object.defineProperty(exports, "__esModule", {
 Object.defineProperty(exports, "Tooltipster", {
   enumerable: true,
   get: function get() {
-    return _Tooltipster2.default;
+    return _Tooltipster2["default"];
   }
 });
 Object.defineProperty(exports, "TooltipsterSVG", {
   enumerable: true,
   get: function get() {
-    return _TooltipsterSVG2.default;
+    return _TooltipsterSVG2["default"];
   }
 });
 

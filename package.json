@@ -1,6 +1,6 @@
 {
   "name": "react-tooltipster",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "tooltipster plugin for react",
   "main": "dist/index.js",
   "sideEffects": false,
@@ -8,18 +8,18 @@
     "dist/*.js"
   ],
   "scripts": {
-    "dev": "webpack-dev-server --hot --inline",
+    "dev": "webpack serve",
     "build": "BABEL_ENV=cjs babel src --out-dir ./dist"
   },
   "dependencies": {
-    "prop-types": "^15.6.2",
     "@babel/runtime": "^7.3.1",
+    "prop-types": "^15.6.2",
     "svg.js": "^2.7.1"
   },
   "peerDependencies": {
     "jquery": "^3.3.1",
-    "react": "^16.7.0",
-    "react-dom": "^16.7.0",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
     "tooltipster": "^4.2.6"
   },
   "devDependencies": {
@@ -34,15 +34,15 @@
     "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.5",
     "babel-plugin-transform-dynamic-import": "^2.1.0",
-    "css-loader": "^2.1.0",
+    "css-loader": "^5.0.1",
     "jquery": "^3.3.1",
-    "react": "^16.7.0",
-    "react-dom": "^16.7.0",
-    "style-loader": "^0.23.1",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "style-loader": "^2.0.0",
     "tooltipster": "^4.2.6",
-    "webpack": "^4.29.0",
-    "webpack-cli": "^3.2.1",
-    "webpack-dev-server": "^3.1.14"
+    "webpack": "^5.16.0",
+    "webpack-cli": "^4.4.0",
+    "webpack-dev-server": "^3.11.2"
   },
   "repository": {
     "type": "git",

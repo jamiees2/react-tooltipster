@@ -5,7 +5,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 var _svg = _interopRequireDefault(require("svg.js"));
 
 // From https://github.com/svgdotjs/svg.screenbbox.js/blob/master/src/svg.screenbbox.js
-_svg.default.extend(_svg.default.Polyline, _svg.default.Polygon, _svg.default.Path, {
+_svg["default"].extend(_svg["default"].Polyline, _svg["default"].Polygon, _svg["default"].Path, {
   screenBBox: function screenBBox() {
     var i,
         transP,
@@ -15,7 +15,7 @@ _svg.default.extend(_svg.default.Polyline, _svg.default.Polygon, _svg.default.Pa
     ,
         p = this.doc().node.createSVGPoint() // instance of SVGPoint
     ,
-        m = this.screenCTM().native() // matrix for transfomation
+        m = this.screenCTM()["native"]() // matrix for transfomation
     ,
         pos = [, 0, 0] // default position (for V and H in Path)
     ,
@@ -38,7 +38,7 @@ _svg.default.extend(_svg.default.Polyline, _svg.default.Polygon, _svg.default.Pa
     } // in case of polygon or polyline we need to normalize it to a path
 
 
-    if (this instanceof _svg.default.Polygon || this instanceof _svg.default.Polyline) {
+    if (this instanceof _svg["default"].Polygon || this instanceof _svg["default"].Polyline) {
       // just add the L
       while (i--) {
         arr[i].unshift('L');
@@ -49,7 +49,7 @@ _svg.default.extend(_svg.default.Polyline, _svg.default.Polygon, _svg.default.Pa
     } // in case of polygon close the path accordingly
 
 
-    if (this instanceof _svg.default.Polygon) {
+    if (this instanceof _svg["default"].Polygon) {
       arr.push(['z']);
     } // loop through path array and transform all points
 
@@ -76,6 +76,6 @@ _svg.default.extend(_svg.default.Polyline, _svg.default.Polygon, _svg.default.Pa
     } // return bbox of created path array
 
 
-    return new _svg.default.PathArray(arr).bbox();
+    return new _svg["default"].PathArray(arr).bbox();
   }
 });

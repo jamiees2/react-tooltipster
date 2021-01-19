@@ -11,6 +11,8 @@ module.exports = {
     host: '0.0.0.0',
     compress: true,
     disableHostCheck: true,
+    inline: true,
+    hot: true,
     stats: {
       assets: false,
       colors: true,
@@ -42,8 +44,14 @@ module.exports = {
         loader: 'babel-loader',
         exclude: [/node_modules/]
       },
-      { test: /\.css$/, loader: 'style-loader!css-loader' }
-    ]
+      {
+        test: /\.css$/, 
+        use: [
+          {loader: 'style-loader'},
+          {loader: 'css-loader'}
+        ]
+      }
+    ]  
   },
   plugins: [
     new webpack.DefinePlugin({
